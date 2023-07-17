@@ -7,6 +7,7 @@
 	$: displayed_count.set(count);
 	$: offset = modulo($displayed_count, 1);
 
+	// 无法解析 ts ？
 	function modulo(n: number, m: number) {
 		// handle negative numbers
 		return ((n % m) + m) % m;
@@ -21,7 +22,7 @@
 	</button>
 
 	<div class="counter-viewport">
-		<div class="counter-digits" style="transform: translate(0, {100 * offset}%)">
+		<div class="counter-digits">
 			<strong class="hidden" aria-hidden="true">{Math.floor($displayed_count + 1)}</strong>
 			<strong>{Math.floor($displayed_count)}</strong>
 		</div>

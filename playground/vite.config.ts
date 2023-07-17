@@ -1,7 +1,9 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
-import { tt } from 'svelte-kit-inspector'
-tt()
+import { svelteKitInspector } from 'svelte-kit-inspector'
 export default defineConfig({
-	plugins: [sveltekit()]
+	plugins: [
+		svelteKitInspector(),
+		sveltekit(),
+	]
 });
