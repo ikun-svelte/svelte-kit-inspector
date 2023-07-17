@@ -1,3 +1,3 @@
 export function tt(){
-  console.log('index')
+  console.log('test')
 }
