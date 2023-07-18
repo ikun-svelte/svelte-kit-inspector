@@ -65,8 +65,6 @@
     onMount(() => {
         toggleCombo && document.body.addEventListener('keydown', onKeydown)
         toggleEventListener()
-        // Expose control to global
-        window.__SVELTE_KIT_INSPECTOR__ = this
     })
     function toggleEventListener() {
         const listener = enabled ? document.body.addEventListener : document.body.removeEventListener
@@ -135,7 +133,7 @@
         e.stopImmediatePropagation()
         const { file, line, column } = params
         overlayVisible = false
-        openInEditor(baseUrl, file, line, column)
+        exposeInstance.openInEditor(baseUrl, file, line, column)
     }
 
     function updateLinkParams(e) {
@@ -160,25 +158,27 @@
     }
 
     // Public methods
-    function enable() {
-        if (enabled)
-            return
-        toggleEnabled()
+    const exposeInstance = {
+        enable: () => {
+            if (enabled)
+                return
+            toggleEnabled()
+        },
+        disable: () => {
+            if (!enabled)
+                return
+            toggleEnabled()
+        },
+        openInEditor: (baseUrl, file, line, column) => {
+            /**
+             * Vite built-in support
+             * https://github.com/vitejs/vite/blob/d59e1acc2efc0307488364e9f2fad528ec57f204/packages/vite/src/node/server/index.ts#L569-L570
+             * */
+            return fetch(`${baseUrl}/__open-in-editor?file=${encodeURIComponent(`${file}:${line}:${column}`)}`)
+        }
     }
-
-    function disable() {
-        if (!enabled)
-            return
-        toggleEnabled()
-    }
-
-    function openInEditor(baseUrl, file, line, column) {
-        /**
-         * Vite built-in support
-         * https://github.com/vitejs/vite/blob/d59e1acc2efc0307488364e9f2fad528ec57f204/packages/vite/src/node/server/index.ts#L569-L570
-         * */
-        return fetch(`${baseUrl}/__open-in-editor?file=${encodeURIComponent(`${file}:${line}:${column}`)}`)
-    }
+    // Expose control to global
+    window.__SVELTE_KIT_INSPECTOR__ = exposeInstance
 </script>
 
 <div data-sv-inspector-ignore>
