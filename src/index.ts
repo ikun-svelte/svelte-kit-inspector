@@ -5,14 +5,16 @@ import {
   V_INSPECTOR_PATH,
   LOG_TIP,
   VitePluginInspectorOptions,
-  normalizeComboKeyPrint, idToFile, parseSvelteRequest,
+  normalizeComboKeyPrint,
+  idToFile,
+  parseSvelteRequest,
 } from './utils'
 import { htmlTransform } from './transform/html-transform'
 import type { PluginOption, ServerOptions } from "vite";
 import { extend } from "baiwusanyu-utils";
-import fs from 'fs'
+import * as fs from 'fs'
 import { normalizePath } from "vite";
-import path from "path";
+import * as path from "path";
 import { fileURLToPath } from "url";
 
 function getInspectorPath() {

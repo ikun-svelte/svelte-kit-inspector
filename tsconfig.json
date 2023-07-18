@@ -14,13 +14,10 @@
     "strictNullChecks": true
   },
   "include": [
-    "packages/**/*.ts",
-    "packages/**/*.d.ts",
-    "packages/**/*.tsx",
-    "packages/**/*.vue",
-    "utils/**/*.ts",
-    "play/**/*.ts",
-    "build/**/*.ts",
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue"
   ],
   // ts 排除的文件
   "exclude": [

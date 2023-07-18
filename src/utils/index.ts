@@ -10,7 +10,7 @@ const toggleComboKeysMap = {
 }
 
 export function normalizeComboKeyPrint(toggleComboKey: string) {
-  return toggleComboKey.split('-').map(key => toggleComboKeysMap[key] || key[0].toUpperCase() + key.slice(1)).join('+')
+  return toggleComboKey.split('-').map(key => toggleComboKeysMap[key as keyof typeof toggleComboKeysMap] || key[0].toUpperCase() + key.slice(1)).join('+')
 }
 
 

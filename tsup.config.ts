@@ -4,13 +4,13 @@ import type { Options } from 'tsup'
 const config = {
   entry: ['src/index.ts'],
   external: [
-    'magic-string',
+    'vite',
   ],
-  format: ['cjs', 'esm'],
+  format: ['esm', 'cjs'],
   clean: true,
   minify: false,
   dts: true,
-
+  shims: true,
 }
 
 // TODO: README
