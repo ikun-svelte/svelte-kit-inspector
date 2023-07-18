@@ -5,7 +5,7 @@ import { parse, preprocess } from 'svelte/compiler'
 import { typescript } from 'svelte-preprocess'
 import type { TemplateNode } from 'svelte/types/compiler/interfaces'
 
-const attr = 'data-sv-inspector'
+const KEY_DATA = 'data-sv-inspector'
 export async function htmlTransform(code, id) {
   const s = new MagicString(code)
   if (!id.endsWith('.svelte')) return s
@@ -43,23 +43,9 @@ function walkHtmlAST(
   for (let i = 0; i < ast.children.length; i++) {
     if (ast.children[i].type === 'Element') {
       const start = ast.children[i].start + ast.children[i].name.length + 1 - offset
-      s.appendRight(start, ` ${attr}='${relativePath}:${findCharLine(s.toString(), ast.children[i].start)}:${ast.children[i].start}'`)
+      s.appendRight(start, ` ${KEY_DATA}='true'`)
       if (ast.children[i].children && ast.children[i].children.length > 0)
         walkHtmlAST(ast.children[i], s, relativePath, offset)
     }
   }
-}
-
-function findCharLine(s, y) {
-  const lines = s.split('\n')
-  let currentLine = 1
-  let currentPos = 0
-  for (let i = 0; i < lines.length; i++) {
-    currentPos += lines[i].length + 1
-    if (y < currentPos)
-      return currentLine
-
-    currentLine++
-  }
-  return currentLine
 }

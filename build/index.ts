@@ -13,4 +13,7 @@ const config = {
 
 }
 
+// TODO: README
+// TODO: README.ZH-CN
+// TODO: build script
 export default defineConfig(config as Options)
