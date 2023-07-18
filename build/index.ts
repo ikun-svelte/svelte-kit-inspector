@@ -16,4 +16,6 @@ const config = {
 // TODO: README
 // TODO: README.ZH-CN
 // TODO: build script
+// TODO: logo
+// TODO: expose api
 export default defineConfig(config as Options)

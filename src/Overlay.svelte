@@ -65,8 +65,6 @@
     onMount(() => {
         toggleCombo && document.body.addEventListener('keydown', onKeydown)
         toggleEventListener()
-
-        // TODO
         // Expose control to global
         window.__SVELTE_KIT_INSPECTOR__ = this
     })
