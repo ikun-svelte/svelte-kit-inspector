@@ -59,7 +59,7 @@
     "play": "pnpm run --filter svelte-kit-inspector-playground dev",
     "build": "tsup",
     "release": "bumpp package.json --commit --push --tag",
-    "publish": "pnpm publish --no-git-checks --access public",
+    "publish:npm": "pnpm publish --no-git-checks --access public",
     "lint:fix": "eslint --fix ./ --ext .vue,.js,.ts,.jsx,.tsx,.json",
     "clean": "rimraf dist",
     "prepare": "npx simple-git-hooks",
