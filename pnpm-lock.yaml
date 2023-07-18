@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -75,6 +75,9 @@ importers:
       sucrase:
         specifier: ^3.32.0
         version: 3.32.0
+      svelte-preprocess:
+        specifier: ^5.0.4
+        version: 5.0.4(@babel/core@7.22.9)(svelte@4.0.5)(typescript@5.1.3)
       tsup:
         specifier: ^6.7.0
         version: 6.7.0(typescript@5.1.3)

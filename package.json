@@ -97,7 +97,8 @@
     "unbuild": "^1.2.1",
     "@vitest/coverage-c8": "^0.32.0",
     "@vitest/ui": "^0.32.0",
-    "vitest": "^0.32.0"
+    "vitest": "^0.32.0",
+    "svelte-preprocess": "^5.0.4"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged",
