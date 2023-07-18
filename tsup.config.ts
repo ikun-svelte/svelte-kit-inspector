@@ -1,6 +1,6 @@
 import { defineConfig } from 'tsup'
 import type { Options } from 'tsup'
-
+import * as fs from 'fs'
 const config = {
   entry: ['src/index.ts'],
   external: [
@@ -17,12 +17,14 @@ const config = {
   dts: true,
   shims: true,
   onSuccess: () => {
-
+    fs.rename('dist/index.js', 'dist/index.mjs', (err) => {
+        if (err) {
+            console.error('Error renaming file:', err);
+        } else {
+            console.log('File renamed successfully.');
+        }
+    })
   }
 }
 
-// TODO: README
-// TODO: README.ZH-CN
-// TODO: build script
-// TODO: logo
 export default defineConfig(config as Options)
