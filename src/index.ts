@@ -1,11 +1,11 @@
-import {PLUGIN_NAME} from "./utils";
-import { htmlTransform } from "./transform/html-transform";
+import { PLUGIN_NAME } from './utils'
+import { htmlTransform } from './transform/html-transform'
 
-export function svelteKitInspector(options = {}){
+export function svelteKitInspector(options = {}) {
   return {
     name: PLUGIN_NAME,
     enforce: 'pre',
-    async transform(code: string, id: string){
+    async transform(code: string, id: string) {
       const mgcStr = await htmlTransform(code, id)
       return {
         code: mgcStr.toString(),
@@ -17,6 +17,6 @@ export function svelteKitInspector(options = {}){
           })
         },
       }
-    }
+    },
   }
 }

@@ -1,5 +1,5 @@
-
-import {defineConfig, Options} from 'tsup'
+import { defineConfig } from 'tsup'
+import type { Options } from 'tsup'
 
 const config = {
   entry: ['src/index.ts'],

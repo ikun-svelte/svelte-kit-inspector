@@ -21,6 +21,9 @@
   "homepage": "https://github.com/baiwusanyu-c",
   "repository": "https://github.com/baiwusanyu-c/svelte-kit-inspector",
   "bugs": "https://github.com/baiwusanyu-c/svelte-kit-inspector/issues",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -29,9 +32,6 @@
     },
     "./*": "./*"
   },
-  "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
   "files": [
     "dist",
     "*.d.ts",
@@ -75,8 +75,12 @@
     "svelte": "^4.0.5"
   },
   "devDependencies": {
-    "@baiwusanyu/eslint-config": "^1.0.12",
+    "@sveltejs/eslint-config": "^6.0.4",
+    "eslint-plugin-svelte": "^2.32.2",
+    "@typescript-eslint/parser": "^5.61.0",
     "@types/node": "^20.1.3",
+    "@vitest/coverage-c8": "^0.32.0",
+    "@vitest/ui": "^0.32.0",
     "bumpp": "^9.1.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.40.0",
@@ -91,30 +95,26 @@
     "rollup": "^3.21.6",
     "simple-git-hooks": "^2.8.1",
     "sucrase": "^3.32.0",
+    "svelte-preprocess": "^5.0.4",
     "tsup": "^6.7.0",
     "typescript": "5.1.3",
-    "vite": "^4.4.4",
     "unbuild": "^1.2.1",
-    "@vitest/coverage-c8": "^0.32.0",
-    "@vitest/ui": "^0.32.0",
-    "vitest": "^0.32.0",
-    "svelte-preprocess": "^5.0.4"
+    "vite": "^4.4.4",
+    "vitest": "^0.32.0"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged",
     "commit-msg": "node vertify-commit.js"
   },
   "lint-staged": {
-    "*.{vue,js,ts,jsx,tsx,md,json}": [
-      "eslint ./ --fix"
+    "*.{js,ts,jsx,tsx,json,svelte}": [
+      "eslint ./src --fix"
     ]
   },
   "publishConfig": {
     "access": "public"
   },
   "eslintConfig": {
-    "extends": [
-      "@baiwusanyu"
-    ]
+    "extends": "plugin:svelte/prettier"
   }
 }
