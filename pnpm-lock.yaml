@@ -114,9 +114,6 @@ importers:
       '@sveltejs/kit':
         specifier: ^1.20.4
         version: 1.20.4(svelte@4.0.5)(vite@4.4.4)
-      '@sveltejs/vite-plugin-svelte-inspector':
-        specifier: latest
-        version: 1.0.3(@sveltejs/vite-plugin-svelte@2.4.2)(svelte@4.0.5)(vite@4.4.4)
       '@types/cookie':
         specifier: ^0.5.1
         version: 0.5.1
