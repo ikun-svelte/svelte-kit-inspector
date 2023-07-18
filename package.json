@@ -3,7 +3,7 @@
   "description": "jump to local IDE source code while click the element of browser automatically.",
   "private": false,
   "type": "module",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "packageManager": "pnpm@8.6.7",
   "keywords": [
     "typescript",
@@ -22,13 +22,13 @@
   "repository": "https://github.com/baiwusanyu-c/svelte-kit-inspector",
   "bugs": "https://github.com/baiwusanyu-c/svelte-kit-inspector/issues",
   "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs"
+      "import": "./dist/index.js"
     },
     "./*": "./*"
   },
@@ -40,7 +40,8 @@
     "src/app.js",
     "src/load-kit.js",
     "src/load.js",
-    "src/Overlay.svelte"
+    "src/Overlay.svelte",
+    "src/components/Logo.svelte"
   ],
   "engines": {
     "node": ">=v14"
