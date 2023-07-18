@@ -3,7 +3,7 @@
   "description": "jump to local IDE source code while click the element of browser automatically.",
   "private": false,
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.0-beta.0",
   "packageManager": "pnpm@8.6.7",
   "keywords": [
     "typescript",
