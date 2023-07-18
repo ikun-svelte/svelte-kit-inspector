@@ -9,13 +9,14 @@ import {
   idToFile,
   parseSvelteRequest,
 } from './utils'
-import { htmlTransform } from './transform/html-transform'
+
 import type { PluginOption, ServerOptions } from "vite";
 import { extend } from "baiwusanyu-utils";
 import * as fs from 'fs'
 import { normalizePath } from "vite";
 import * as path from "path";
 import { fileURLToPath } from "url";
+import MagicString from "magic-string";
 
 function getInspectorPath() {
   // @ts-ignore
@@ -81,8 +82,7 @@ function svelteKitInspector(options: VitePluginInspectorOptions = DEFAULT_CONFIG
       const { filename, query } = parseSvelteRequest(id)
       const isTpl = filename.endsWith('.svelte') && query.type !== 'style' && !query.raw
       if(isTpl){
-        const mgcStr = await htmlTransform(code, id)
-
+        const mgcStr = new MagicString(code)
         // inject load-kit.js into root sfc
         if (filename.includes('root.svelte')) {
           mgcStr.replaceAll('<script>', `<script>\nimport '${V_INSPECTOR_PATH}load-kit.js'`)

@@ -4,13 +4,21 @@ import type { Options } from 'tsup'
 const config = {
   entry: ['src/index.ts'],
   external: [
-    'vite',
+      'vite',
+  ],
+  noExternal: [
+      'baiwusanyu-utils',
+      'ansi-colors',
+      'magic-string'
   ],
   format: ['esm', 'cjs'],
   clean: true,
   minify: false,
   dts: true,
   shims: true,
+  onSuccess: () => {
+
+  }
 }
 
 // TODO: README

@@ -106,8 +106,9 @@
             }
         }
         const ignoreIndex = path.findIndex(node => node?.hasAttribute?.(KEY_IGNORE))
-        const targetNode = path.slice(ignoreIndex + 1).find(node => node?.hasAttribute?.(KEY_DATA))
-        if (!targetNode) {
+        const targetNode = path.slice(ignoreIndex + 1).find(node => node)
+
+        if (targetNode === path[ignoreIndex] || targetNode.contains(path[ignoreIndex])) {
             return {
                 targetNode: null,
                 params: null,
