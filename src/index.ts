@@ -24,7 +24,7 @@ function getInspectorPath() {
   return pluginPath.replace(/\/dist$/, '/src')
 }
 
-function svelteKitInspector(options: VitePluginInspectorOptions = DEFAULT_CONFIG):PluginOption {
+function svelteKitInspector(options: VitePluginInspectorOptions = DEFAULT_CONFIG): PluginOption {
   const inspectorPath = getInspectorPath()
   let serverOptions: ServerOptions | undefined
   const finalOptions = extend(DEFAULT_CONFIG, options)
@@ -81,7 +81,7 @@ function svelteKitInspector(options: VitePluginInspectorOptions = DEFAULT_CONFIG
     async transform(code: string, id: string) {
       const { filename, query } = parseSvelteRequest(id)
       const isTpl = filename.endsWith('.svelte') && query.type !== 'style' && !query.raw
-      if(isTpl){
+      if (isTpl) {
         const mgcStr = new MagicString(code)
         // inject load-kit.js into root sfc
         if (filename.includes('root.svelte')) {
