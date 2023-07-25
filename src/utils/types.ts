@@ -25,6 +25,12 @@ export interface VitePluginInspectorOptions {
   enabled?: boolean
 
   /**
+   * Pick component only once every time
+   * @default false
+   */
+  pickOnlyOnce?: boolean
+
+  /**
    * Define the assembly to call out the inspector
    * win: control + shift
    * mac: meta + shift
@@ -55,6 +61,7 @@ export interface VitePluginInspectorOptions {
    * useful for frameworks that do not support transformIndexHtml hook (e.g. Nuxt3)
    *
    * WARNING: only set this if you know exactly what it does.
+   * @default true
    */
-  kit: true
+  kit?: true
 }

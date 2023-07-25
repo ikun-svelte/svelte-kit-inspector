@@ -1,8 +1,9 @@
-import {VitePluginInspectorOptions} from "./types";
+import { VitePluginInspectorOptions } from "./types";
 
 
-export const DEFAULT_CONFIG:VitePluginInspectorOptions = {
+export const DEFAULT_CONFIG: VitePluginInspectorOptions = {
   enabled: false,
+  pickOnlyOnce: false,
   toggleComboKey: process.platform === 'darwin' ? 'meta-shift' : 'control-shift',
   toggleButtonVisibility: 'active',
   toggleButtonPos: 'top-right',
