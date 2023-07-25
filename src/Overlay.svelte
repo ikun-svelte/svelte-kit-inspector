@@ -74,6 +74,23 @@
     })
     function toggleEventListener() {
         const listener = enabled ? document.body.addEventListener : document.body.removeEventListener
+        listener?.('resize', () => {
+            overlayVisible = false
+            linkParams = {
+                file: '',
+                line: 0,
+                column: 0,
+            }
+        })
+
+        listener?.('scroll', () => {
+            overlayVisible = false
+            linkParams = {
+                file: '',
+                line: 0,
+                column: 0,
+            }
+        })
         listener?.('mousemove', updateLinkParams)
         listener?.('click', handleClick, true)
     }
@@ -114,6 +131,12 @@
         const targetNode = path.slice(ignoreIndex + 1).find(node => node)
 
         if (targetNode === path[ignoreIndex] || targetNode.contains(path[ignoreIndex])) {
+            return {
+                targetNode: null,
+                params: null,
+            }
+        }
+        if(!targetNode.__svelte_meta){
             return {
                 targetNode: null,
                 params: null,
