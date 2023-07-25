@@ -1,6 +1,6 @@
 <script>
     import inspectorOptions from 'virtual:svelte-kit-inspector-options'
-    import {onMount} from "svelte";
+    import {onDestroy, onMount} from "svelte";
     import Logo from "./components/Logo.svelte";
     const isClient = typeof window !== 'undefined'
     const importMetaUrl = isClient ? new URL(import.meta.url) : {}
@@ -65,6 +65,11 @@
 
     onMount(() => {
         toggleCombo && document.body.addEventListener('keydown', onKeydown)
+        toggleEventListener()
+    })
+
+    onDestroy(() => {
+        enabled = false
         toggleEventListener()
     })
     function toggleEventListener() {
