@@ -1,6 +1,6 @@
 <script>
     import inspectorOptions from 'virtual:svelte-kit-inspector-options'
-    import {onMount} from "svelte";
+    import {onDestroy, onMount} from "svelte";
     import Logo from "./components/Logo.svelte";
     const isClient = typeof window !== 'undefined'
     const importMetaUrl = isClient ? new URL(import.meta.url) : {}
@@ -67,10 +67,16 @@
         toggleCombo && document.body.addEventListener('keydown', onKeydown)
         toggleEventListener()
     })
-    
+
+    onDestroy(() => {
+        enabled = false
+        toggleEventListener()
+    })
+  
     function toggleEventListener() {
         const listener = enabled ? document.body.addEventListener : document.body.removeEventListener
         listener?.('resize', resetLinkParams)
+        listener?.('scroll', resetLinkParams)
         listener?.('mousemove', updateLinkParams)
         listener?.('click', handleClick, true)
     }
@@ -114,6 +120,12 @@
         const targetNode = path.slice(ignoreIndex + 1).find(node => node)
 
         if (targetNode === path[ignoreIndex] || targetNode.contains(path[ignoreIndex])) {
+            return {
+                targetNode: null,
+                params: null,
+            }
+        }
+        if(!targetNode.__svelte_meta){
             return {
                 targetNode: null,
                 params: null,
