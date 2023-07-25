@@ -72,33 +72,21 @@
         enabled = false
         toggleEventListener()
     })
+  
     function toggleEventListener() {
         const listener = enabled ? document.body.addEventListener : document.body.removeEventListener
-        listener?.('resize', () => {
-            overlayVisible = false
-            linkParams = {
-                file: '',
-                line: 0,
-                column: 0,
-            }
-        })
-
-        listener?.('scroll', () => {
-            overlayVisible = false
-            linkParams = {
-                file: '',
-                line: 0,
-                column: 0,
-            }
-        })
+        listener?.('resize', resetLinkParams)
+        listener?.('scroll', resetLinkParams)
         listener?.('mousemove', updateLinkParams)
         listener?.('click', handleClick, true)
     }
+
     function toggleEnabled() {
         enabled = !enabled
         overlayVisible = false
         toggleEventListener()
     }
+
     function onKeydown(event) {
         if (event.repeat || event.key === undefined)
             return
@@ -107,6 +95,7 @@
         if (isCombo)
             toggleEnabled()
     }
+
     function isKeyActive(key, event) {
         switch (key) {
             case 'shift':
@@ -177,13 +166,15 @@
             position.height = rect.height
             linkParams = params
         }
-        else {
-            overlayVisible = false
-            linkParams = {
-                file: '',
-                line: 0,
-                column: 0,
-            }
+        else resetLinkParams()
+    }
+
+    function resetLinkParams() {
+        overlayVisible = false
+        linkParams = {
+            file: '',
+            line: 0,
+            column: 0,
         }
     }
 
@@ -282,7 +273,7 @@
         text-decoration: none;
     }
 
-    .svelte-kit-inspector-container:hover .svelte-kit-inspector-banner {
+    .svelte-kit-inspector-container:hover .svelte-kit-inspector-banner, .svelte-kit-inspector-banner:hover {
         display: block;
     }
 
