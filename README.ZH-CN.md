@@ -46,6 +46,12 @@ export interface VitePluginInspectorOptions {
    enabled?: boolean
 
    /**
+    * 是否每次开启只选择一次组件
+    * @default false
+    */
+   pickOnlyOnce?: boolean
+
+   /**
     * 呼出 inpector 的组合键
     * win: control + shift
     * mac: meta + shift

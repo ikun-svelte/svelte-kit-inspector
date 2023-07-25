@@ -3,7 +3,10 @@ import { defineConfig } from 'vite'
 import svelteKitInspector from 'svelte-kit-inspector'
 export default defineConfig({
   plugins: [
-    svelteKitInspector(),
+    svelteKitInspector({
+      pickOnlyOnce: true,
+      kit: true,
+    }),
     sveltekit(),
   ],
 })

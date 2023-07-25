@@ -153,6 +153,8 @@
         const { file, line, column } = params
         overlayVisible = false
         exposeInstance.openInEditor(baseUrl, file, line, column)
+
+        inspectorOptions.pickOnlyOnce && exposeInstance.disable()
     }
 
     function updateLinkParams(e) {

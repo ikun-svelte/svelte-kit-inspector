@@ -46,6 +46,12 @@ export interface VitePluginInspectorOptions {
    enabled?: boolean
 
    /**
+    * Pick component only once every time
+    * @default false
+    */
+   pickOnlyOnce?: boolean
+
+   /**
     * Define the assembly to call out the inspector
     * win: control + shift
     * mac: meta + shift
