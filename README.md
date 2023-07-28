@@ -1,5 +1,5 @@
 # svelte-kit-inspector
-🧩 jump to local IDE source code while click the element of browser automatically.
+🧩 jump to local IDE source code while click the element of browser automatically. [opn in stackblitz](https://stackblitz.com/edit/vitejs-vite-dalqvi?file=src%2Froutes%2F%2Bpage.svelte)
 
 English | [中文](https://github.com/baiwusanyu-c/svelte-kit-inspector/blob/master/README.ZH-CN.md)
 
