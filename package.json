@@ -104,7 +104,7 @@
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged",
-    "commit-msg": "node vertify-commit.js"
+    "commit-msg": "node verify-commit.js"
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx,json,svelte}": [

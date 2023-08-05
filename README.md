@@ -6,13 +6,13 @@ English | [中文](https://github.com/baiwusanyu-c/svelte-kit-inspector/blob/mas
 ## Install
 
 ```bash
-npm i svelte-kit-inspector-D
+npm i svelte-kit-inspector -D
 ```
-或
+or
 ```bash
 yarn add svelte-kit-inspector -D
 ```
-或
+or
 ```bash
 pnpm add svelte-kit-inspector -D
 ```
@@ -73,7 +73,7 @@ export interface VitePluginInspectorOptions {
 
    /**
     * The location of the trigger button
-    * @default top-right
+    * @default 'top-right'
     */
    toggleButtonPos?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left'
 
@@ -83,7 +83,7 @@ export interface VitePluginInspectorOptions {
     *
     * WARNING: only set this if you know exactly what it does.
     */
-   kit: true
+   kit?: true
 }
 ```
 
