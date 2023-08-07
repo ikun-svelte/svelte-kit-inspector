@@ -51,7 +51,10 @@ function svelteKitInspector(options: VitePluginInspectorOptions = DEFAULT_CONFIG
       }
     },
 
-    async load(id) {
+    async load(id, options) {
+      if (options?.ssr) {
+        return;
+      }
       if (id === V_INSPECTOR_OPTIONS) {
         return `export default ${JSON.stringify({ ...finalOptions, serverOptions })}`
       } else if (id.startsWith(inspectorPath)) {
@@ -78,15 +81,18 @@ function svelteKitInspector(options: VitePluginInspectorOptions = DEFAULT_CONFIG
       })
     },
 
-    async transform(code: string, id: string) {
-      const { filename, query } = parseSvelteRequest(id)
-      const isTpl = filename.endsWith('.svelte') && query.type !== 'style' && !query.raw
-      if (isTpl) {
+    async transform(code: string, id: string, options) {
+      if (options?.ssr) {
+        return;
+      }
+
+      const { filename } = parseSvelteRequest(id)
+      const isViteEnv = filename.endsWith('vite/dist/client/client.mjs')
+
+      if (isViteEnv) {
         const mgcStr = new MagicString(code)
-        // inject load-kit.js into root sfc
-        if (filename.includes('root.svelte')) {
-          mgcStr.replaceAll('<script>', `<script>\nimport '${V_INSPECTOR_PATH}load-kit.js'`)
-        }
+        // inject load-kit.js into vite client
+        mgcStr.append(`\n import('${V_INSPECTOR_PATH}load-kit.js') \n`)
 
         return {
           code: mgcStr.toString(),

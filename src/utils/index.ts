@@ -32,8 +32,8 @@ export function parseSvelteRequest(id: string) {
   const [filename] = id.split('?', 2)
   const url = new URL(id, 'http://domain.inspector')
   const query = Object.fromEntries(url.searchParams.entries()) as any
-  if (query.vue != null)
-    query.vue = true
+  if (query.svelte != null)
+    query.svelte = true
 
   if (query.src != null)
     query.src = true
