@@ -72,7 +72,7 @@
         enabled = false
         toggleEventListener()
     })
-  
+
     function toggleEventListener() {
         const listener = enabled ? document.body.addEventListener : document.body.removeEventListener
         listener?.('resize', resetLinkParams)
@@ -210,7 +210,9 @@
              class="svelte-kit-inspector-container {!enabled ? 'svelte-kit-inspector-container--disabled' : ''}"
              style={containerPosition}>
             <!-- Logo -->
-            <div on:click|stopPropagation|preventDefault ={toggleEnabled} class="svelte-kit-inspector-logo">
+            <div on:click|stopPropagation|preventDefault ={toggleEnabled}
+                 aria-hidden="true"
+                 class="svelte-kit-inspector-logo">
                 <Logo marginBottom="8px"></Logo>
                 <span>Inspector</span>
             </div>
