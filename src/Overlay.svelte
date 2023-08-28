@@ -220,7 +220,7 @@
             <!-- Banner  -->
             <a style={bannerPosition()}
                class="svelte-kit-inspector-banner svelte-kit-inspector-card"
-               href="https://github.com/baiwusanyu-c/svelte-kit-inspector"
+               href="https://github.com/ikun-svelte/svelte-kit-inspector"
                target="_blank">
                 <div>svelte-kit-inspector</div>
                 <div class="tip">Click on a element › Open IDE › Link to File</div>

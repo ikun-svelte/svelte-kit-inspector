@@ -1,7 +1,7 @@
 # svelte-kit-inspector
 🧩 通过点击元素能够自动跳转打开到 `IDE` `svelte` 源码的插件 [stackblitz](https://stackblitz.com/edit/vitejs-vite-dalqvi?file=src%2Froutes%2F%2Bpage.svelte)
 
-[English](https://github.com/baiwusanyu-c/svelte-kit-inspector/blob/master/README.md) | 中文
+[English](https://github.com/ikun-svelte/svelte-kit-inspector/blob/master/README.md) | 中文
 
 ## 安装
 
